@@ -15,4 +15,6 @@ public class CarProcessor implements ItemProcessor<CarLoadViewModel, Car> {
         BeanUtils.copyProperties(carLoadViewModel, newCar);
         return newCar;
     }
+
+
 }
