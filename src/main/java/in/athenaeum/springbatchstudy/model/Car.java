@@ -14,13 +14,15 @@ public class Car {
     private String model;
     private int year;
     private String colour;
+    private String vin;
 
-    public Car(int id, String make, String model, int year, String colour) {
+    public Car(int id, String make, String model, int year, String colour, String vin) {
         this.id = id;
         this.make = make;
         this.model = model;
         this.year = year;
         this.colour = colour;
+        this.vin = vin;
     }
 
     public Car() {
@@ -64,5 +66,13 @@ public class Car {
 
     public void setColour(String colour) {
         this.colour = colour;
+    }
+
+    public String getVin() {
+        return vin;
+    }
+
+    public void setVin(String vin) {
+        this.vin = vin;
     }
 }

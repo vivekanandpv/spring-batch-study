@@ -7,6 +7,7 @@ public class CarLoadViewModel {
     private int year;
     private String colour;
     private String fuel;
+    private String vin;
 
     public int getId() {
         return id;
@@ -54,5 +55,13 @@ public class CarLoadViewModel {
 
     public void setFuel(String fuel) {
         this.fuel = fuel;
+    }
+
+    public String getVin() {
+        return vin;
+    }
+
+    public void setVin(String vin) {
+        this.vin = vin;
     }
 }
