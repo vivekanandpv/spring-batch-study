@@ -28,7 +28,8 @@ public class BatchConfig {
                    StepBuilderFactory stepBuilderFactory,
                    ItemReader<CarLoadViewModel> itemReader,
                    ItemProcessor<CarLoadViewModel, Car> itemProcessor,
-                   ItemWriter<Car> itemWriter
+                   ItemWriter<Car> itemWriter,
+                   JobCompletionNotificationListener listener
     ) {
 
         Step step = stepBuilderFactory.get("Step: file load")
@@ -41,6 +42,7 @@ public class BatchConfig {
 
         return jobBuilderFactory.get("Job: ETL : Car")
                 .incrementer(new RunIdIncrementer())
+                .listener(listener) //  listener added
                 .start(step)
                 .build();
     }
@@ -64,7 +66,7 @@ public class BatchConfig {
 
         lineTokenizer.setDelimiter(",");
         lineTokenizer.setStrict(false);
-        lineTokenizer.setNames("id", "make", "model", "year", "colour", "fuel");
+        lineTokenizer.setNames("id", "make", "model", "year", "colour", "fuel", "vin");
 
         BeanWrapperFieldSetMapper<CarLoadViewModel> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(CarLoadViewModel.class);
